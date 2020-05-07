@@ -3,8 +3,8 @@
 import math
 import sys
 
-# sys.stdin = open('in.txt', 'r')
-# sys.stdout = open('out.txt', 'w')
+# sys.stdin = open('./file/input.txt', 'r')
+# sys.stdout = open('./file/output.txt', 'w')
 
 t = int(input())
 for index in range(t):
