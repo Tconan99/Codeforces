@@ -1,4 +1,4 @@
-# https://codeforces.com/problemset/problem/1352/D
+# https://codeforces.com/problemset/problem/1352/G
 
 import sys
 
