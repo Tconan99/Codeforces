@@ -1,1 +1,6 @@
 file
+.vscode
+.iml
+.idea
+lib
+src
