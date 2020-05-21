@@ -14,17 +14,24 @@ except:
 
 t = int(input())
 
+def printd(value):
+    # print(value)
+    pass
+
 for _ in range(t):
     arr = list(map(int, input().split(" ")))
     n, k = arr[0], arr[1]
-    str = input().strip("0")
+    str = input()
     count = len(str)
-    left = [0] * count
-    right = [0] * count
+    leftone = [0] * count
+    leftzero = [0] * count
+    rightone = [0] * count
+    rightzero = [0] * count
 
     one = [0] * count
+    # zero = [0] * count
 
-    sum= 0
+    sum = 0
     for i, c in enumerate(str):
         if i > 0:
             sum += 1 if str[i - 1] == '1' else 0
@@ -34,22 +41,25 @@ for _ in range(t):
 
         one[i] = sum
 
-    # print(str)
-    # print(one)
+    printd(str)
+    printd(one)
 
     for i, c in enumerate(str):
-        number = one[i]
-        number += 1 if c == '0' else 0
+        number = 1 if c == '0' else 0
+        numberzero = 0 if c == '0' else 1
         if i >= k:
-            number += left[i - k]
-        left[i] = number
+            number += min(leftone[i - k], leftzero[i - k])
+            numberzero += leftzero[i - k]
+        leftone[i] = one[i] + number
+        leftzero[i] = one[i] + numberzero
     
-    # print(left)
+    printd(leftone)
+    printd(leftzero)
 
-    # print("--right---")
+    printd("--right---")
 
     str = str[::-1]
-    sum= 0
+    sum = 0
     for i, c in enumerate(str):
         if i > 0:
             sum += 1 if str[i - 1] == '1' else 0
@@ -59,26 +69,33 @@ for _ in range(t):
 
         one[i] = sum
 
-    # print(str)
-    # print(one)
+
+    printd(str)
+    printd(one)
 
     for i, c in enumerate(str):
-        number = one[i]
-        number += 1 if c == '0' else 0
+        number = 1 if c == '0' else 0
+        numberzero = 0 if c == '0' else 1
         if i >= k:
-            number += right[i - k]
-        right[i] = number
+            number += min(rightone[i - k], rightzero[i - k])
+            numberzero += rightzero[i - k]
+        rightone[i] = one[i] + number
+        rightzero[i] = one[i] + numberzero
     
-    # print(right)
+    printd(rightone)
+    printd(rightzero)
 
-    left.reverse()
+    leftone.reverse()
+    leftzero.reverse()
 
     result = 99999999
     for i, c in enumerate(str):
-        value = left[i] + right[i]
+        value = leftone[i] + rightone[i]
         value -= 1 if c == '0' else 0
         result = min(result, value)
 
-    print(result)
+        value = leftzero[i] + rightzero[i]
+        value -= 0 if c == '0' else 1
+        result = min(result, value)
 
-        
+    print(result)
