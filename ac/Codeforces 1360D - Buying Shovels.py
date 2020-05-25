@@ -1,8 +1,9 @@
-# https://codeforces.com/contest/1353/problem/E
+# https://codeforces.com/problemset/problem/1360/D
 
 import sys
 import os
 import heapq
+import math
 
 try:
     path = "./file/input.txt"
@@ -21,11 +22,14 @@ def printd(value):
 for _ in range(t):
     arr = list(map(int, input().split(" ")))
     n, k = arr[0], arr[1]
-    for i in range(k, 0, -1):
+    result = n
+    end = min(k, int(math.sqrt(n)) + 1)
+    for i in range(1, end + 1):
         if n % i == 0:
             number = int(n / i)
-            print(number)
-            break
-    
-    
-    
+            if number <= k:
+                result = min(result, i)
+            if i <= k:
+                result = min(number, result)
+
+    print(result)
