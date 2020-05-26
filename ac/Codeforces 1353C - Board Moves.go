@@ -9,28 +9,20 @@ import (
 
 func main() {
 
-	f, err := os.Open("./file/input.txt")
-	if err != nil {
-		fmt.Println("2")
-	} else {
-		fmt.Println("1")
-	}
+	filename := "./file/input.txt"
+	_, err := os.Stat(filename)
+	if err == nil || os.IsExist(err) {
+		f, err := os.Open(filename)
+		defer f.Close()
 
-	if f != nil {
-		fmt.Println("3")
-	} else {
-		fmt.Println(4)
-	}
+		oldStdin := os.Stdin
+		defer func() {
+			os.Stdin = oldStdin
+		}()
 
-	defer f.Close()
-
-	oldStdin := os.Stdin
-	defer func() {
-		os.Stdin = oldStdin
-	}()
-
-	if err == nil {
-		// os.Stdin = f
+		if err == nil {
+			os.Stdin = f
+		}
 	}
 
 	var t, n, result, k int64
