@@ -61,6 +61,13 @@ fun case() {
             }
         }
     }
+
+    i = 0
+    while i < n:
+        if s[i] != k:
+            i += 1
+            continue
+        
     println("no")
 }
 
