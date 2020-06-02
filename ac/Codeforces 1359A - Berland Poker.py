@@ -1,4 +1,4 @@
-# https://codeforces.com/problemset/problem/1360/F
+# https://codeforces.com/problemset/problem/1359/A
 
 import sys
 import os
@@ -42,6 +42,3 @@ for _ in range(t):
                     result += x
                     i+= 1
     print(result)
-
-                
-
