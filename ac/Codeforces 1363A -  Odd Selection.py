@@ -1,4 +1,4 @@
-# https://codeforces.com/contest/1360/problem/F
+# https://codeforces.com/problemset/problem/1363/A
 
 import sys
 import os
@@ -31,23 +31,12 @@ def case():
             odd += 1
         else:
             even += 1
-    if odd % 2 == 0 and odd > 0:
-        odd -= 1
 
-    if odd == 0:
-        print("No")
-        return
-
-    if k + 1 <= even:
-        print("Yes")
-        return
-
-    if even > 0:
-        k -= even
-        if k % 2 == 0:
-            k += 1
+    k = max(1, k - even)
+    if k % 2 == 0 and even > 0:
+        k += 1
     
-    if k <= odd and k % 2 == 1:
+    if odd >= k and k % 2 == 1:
         print("Yes")
     else:
         print("No")
