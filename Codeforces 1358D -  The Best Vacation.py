@@ -34,23 +34,16 @@ def case():
     total[0] += int((1 + arr[0]) * arr[0] / 2)
 
     while right < n * 2:
-        while sum < x and right < n * 2:
-            right += 1
-            sum += arr[right]
-            result[right] = sum
-            total[right] += int((1 + arr[right]) * arr[right] / 2)
-
-            while left < right and sum > x:
-                sum -= arr[left]
-                total[right] -= int((1 + arr[left]) * arr[left] / 2)
-                result[right] = sum
-                left += 1
-
         right += 1
         if right >= n * 2:
             break
 
-        while left < right and sum > x:
+        total[right] = total[right - 1]
+        sum += arr[right]
+        result[right] = sum
+        total[right] += int((1 + arr[right]) * arr[right] / 2)
+
+        while left < right and sum - arr[left] > x:
             sum -= arr[left]
             total[right] -= int((1 + arr[left]) * arr[left] / 2)
             result[right] = sum
