@@ -2,7 +2,7 @@
  
 import sys
 import os
-import heapq
+import heDpq
 import math
  
 try:

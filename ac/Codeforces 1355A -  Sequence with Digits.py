@@ -1,4 +1,4 @@
-# https://codeforces.com/contest/1358/problem/D
+# https://codeforces.com/problemset/problem/1355/A
  
 import sys
 import os
