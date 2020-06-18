@@ -21,8 +21,15 @@ def printd(value):
  
 def case():
     n = int(input())
-    x = 1 / math.sin(math.pi / (2 * n))
-    print(x)
+    ang = 360 / (2 * n)
+    x = 0.5 / math.sin(math.radians(ang / 2))
+    ang2 = round(n / 4) * ang
+    ang1 = 90 - ang2
+    
+    ans1 = math.sin(math.radians(ang1)) * x / math.sin(math.radians(45))
+    ans2 = math.sin(math.radians(ang2)) * x / math.sin(math.radians(45))
+
+    print(ans1 + ans2)
 
 for _ in range(t):
     case()
